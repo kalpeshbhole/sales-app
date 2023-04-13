@@ -1,0 +1,16 @@
+<div [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="center center">
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div>
+            <button mat-raised-button [disabled]="!loginForm.valid" (click)="logIn()"
+                color="primary">Login</button>
+        </div>
+    </div>
+</div>
