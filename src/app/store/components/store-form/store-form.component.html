@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Store Form</h2>
+<mat-dialog-content>
+    <div [formGroup]="storeForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <br>
+        Address
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Address 1</mat-label>
+            <input matInput formControlName="address1">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Address 2</mat-label>
+            <input matInput formControlName="address2">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Address 3</mat-label>
+            <input matInput formControlName="address3">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="countryId">
+                <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="stateId">
+                <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <mat-select formControlName="cityId">
+                <mat-option *ngFor="let city of cities" [value]="city.id">{{city.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Zip Code</mat-label>
+            <input matInput formControlName="zipCode">
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancelStore()" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="saveStore()"
+    [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

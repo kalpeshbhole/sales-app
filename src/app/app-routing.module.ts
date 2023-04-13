@@ -5,7 +5,8 @@ import { NotFoundComponent } from '@shared/components';
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: 'regions', loadChildren: () => import('./region/region.module').then(m => m.RegionModule) },
-  //{ path: 'sales-person', loadChildren: () => import('./sales-person/sales-person.module').then(m => m.SalesPersonModule) },
+  { path: 'stores', loadChildren: () => import('./store/store.module').then(m => m.StoreModule) },
+  { path: 'sales-persons', loadChildren: () => import('./sales-person/sales-person.module').then(m => m.SalesPersonModule) },
   { path: '**', component: NotFoundComponent }
 ];
 

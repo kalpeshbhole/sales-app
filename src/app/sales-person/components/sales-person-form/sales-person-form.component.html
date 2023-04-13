@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Sales Person Form</h2>
+<mat-dialog-content>
+  <div [formGroup]="salesPersonForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Middle Name</mat-label>
+      <input matInput formControlName="middleName">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+    <br>
+    Regions<button mat-raised-button color="primary" (click)="addRegion()">+</button>
+    <br>
+    <div formArrayName='regions'>
+      <div *ngFor="let regionFG of regionsFA.controls; let i = index" [formGroupName]="i">
+        <mat-form-field appearance="fill">
+          <mat-label>Country</mat-label>
+          <mat-select (valueChange)="changeCountry($event)">
+            <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <mat-select formControlName="stateId">
+            <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-checkbox formControlName="isPrimary">Primary</mat-checkbox>
+        <button mat-raised-button color="primary" (click)="removeRegion(i)">X</button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelSalesPerson()" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="saveSalesPerson()" [mat-dialog-close]="true"
+    cdkFocusInitial>Save</button>
+</mat-dialog-actions>

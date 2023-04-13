@@ -2,6 +2,7 @@
     <mat-toolbar-row>
         <div *ngIf="authService.isUserLoggedIn()" fxFlex fxLayout fxLayoutAlign="flex-start">
             <button mat-button routerLink="/regions" routerLinkActive="router-link-active">Regions</button>
+            <button mat-button routerLink="/stores" routerLinkActive="router-link-active">Stores</button>
             <button mat-button routerLink="/sales-persons" routerLinkActive="router-link-active">Sales Persons</button>
         </div>
         <button *ngIf="!authService.isUserLoggedIn()" mat-icon-button aria-label="LogIn" (click)="logIn()">

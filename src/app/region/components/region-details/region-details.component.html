@@ -1,28 +1,26 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>Regions</mat-card-title>
-    </mat-card-header>
     <mat-card-content>
         <div fxLayout="row" fxFlex="100%" fxLayoutGap="10px">
             <div fxFlex="50%">
                 <h2>Stores</h2>
                 <mat-list *ngIf="stores.length">
-                    <div *ngFor="let store of stores">
+                    <div *ngFor="let store of stores; let i = index">
                         <mat-list-item>{{store.name}}</mat-list-item>
-                        <mat-divider></mat-divider>
+                        <mat-divider *ngIf="stores.length !== i+1"></mat-divider>
                     </div>
                 </mat-list>
                 <span *ngIf="!stores.length">
                     No stores associated with selected region.
                 </span>
             </div>
+            <mat-divider [vertical]="true"></mat-divider>
             <div fxFlex="50%">
                 <h2>Sales Persons</h2>
                 <mat-list *ngIf="salesPersons.length">
-                    <div *ngFor="let salesPerson of salesPersons">
+                    <div *ngFor="let salesPerson of salesPersons; let i = index">
                         <mat-list-item>{{salesPerson.firstName}} {{salesPerson.middleName}}
                             {{salesPerson.lastName}}</mat-list-item>
-                        <mat-divider></mat-divider>
+                        <mat-divider *ngIf="salesPersons.length !== i+1"></mat-divider>
                     </div>
                 </mat-list>
                 <span *ngIf="!salesPersons.length">

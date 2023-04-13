@@ -1,0 +1,39 @@
+<div class="add-sales-person-button">
+    <button mat-raised-button color="primary" class="pull-right" (click)="addSalesPerson()">+ Sales Person</button>
+</div>
+
+<table mat-table [dataSource]="salesPersons" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> <span
+                (click)="showSalesPersonDetails(element.id)">{{element.id}} </span></td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.middleName}} {{element.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createByUser">
+        <th mat-header-cell *matHeaderCellDef> create By User</th>
+        <td mat-cell *matCellDef="let element"> {{element.createByUser}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createDate">
+        <th mat-header-cell *matHeaderCellDef> Create Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.createDate | date :'medium'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updateByUser">
+        <th mat-header-cell *matHeaderCellDef> Update By User</th>
+        <td mat-cell *matCellDef="let element"> {{element.updateByUser}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updateDate">
+        <th mat-header-cell *matHeaderCellDef> Last Update Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.updateDate | date :'medium'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

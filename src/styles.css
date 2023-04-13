@@ -7,7 +7,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-columns: 50px 1fr 50px;
     grid-template-rows: auto 1fr auto;
     grid-gap: 12px;
     grid-template-areas:
@@ -27,19 +27,19 @@ body {
 .nav {
     grid-area: nav;
     margin-left: 0.6rem;
-    background-color: #2A92BF;
+    /* background-color: #2A92BF; */
 }
 
 .main {
     grid-area: content;
-    background-color: #F4CE46;
+    /* background-color: #F4CE46; */
     padding: 25px;
 }
 
 .aside {
     grid-area: side;
     margin-right: 0.6rem;
-    background-color: #2A92BF;
+    /* background-color: #2A92BF; */
 }
 
 .footer {
