@@ -9,7 +9,7 @@ import { AuthService } from '@auth/services';
 })
 export class CustomHeaderComponent {
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(public router: Router, public authService: AuthService) {}
 
   logIn(){
     this.router.navigate(['auth/login']);
@@ -17,7 +17,7 @@ export class CustomHeaderComponent {
 
   logOut(){
     this.authService.logOut().subscribe(() => {
-      this.router.navigate(['atm']);
+      this.router.navigate(['auth/login']);
     });
   }
 }

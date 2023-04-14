@@ -23,7 +23,7 @@ export class LoginComponent {
     }
 
     this.authService.login(this.loginForm.value as {username: string, password: string}).subscribe(res => {
-      this.router.navigate(['overview/regions']);
+      this.router.navigate(['regions']);
     });
 
   }

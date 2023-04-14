@@ -1,11 +1,14 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <div *ngIf="authService.isUserLoggedIn()" fxFlex fxLayout fxLayoutAlign="flex-start">
-            <button mat-button routerLink="/regions" routerLinkActive="router-link-active">Regions</button>
-            <button mat-button routerLink="/stores" routerLinkActive="router-link-active">Stores</button>
-            <button mat-button routerLink="/sales-persons" routerLinkActive="router-link-active">Sales Persons</button>
+        <div fxFlex fxLayout fxLayoutAlign="flex-start">
+            <div><mat-icon>electric_bolt</mat-icon></div>
+            <div *ngIf="authService.isUserLoggedIn()">
+                <button mat-button routerLink="/regions" routerLinkActive="router-link-active">Regions</button>
+                <button mat-button routerLink="/stores" routerLinkActive="router-link-active">Stores</button>
+                <button mat-button routerLink="/sales-persons" routerLinkActive="router-link-active">Sales Persons</button>
+            </div>
         </div>
-        <button *ngIf="!authService.isUserLoggedIn()" mat-icon-button aria-label="LogIn" (click)="logIn()">
+        <button *ngIf="!authService.isUserLoggedIn() && router.url !== '/auth/login'" mat-icon-button aria-label="LogIn" (click)="logIn()">
             <mat-icon>login</mat-icon>
         </button>
         <button *ngIf="authService.isUserLoggedIn()" mat-icon-button aria-label="LogOut" (click)="logOut()">

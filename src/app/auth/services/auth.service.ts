@@ -31,7 +31,7 @@ export class AuthService {
 
   logOut() {
     return this.userService.postLogout().pipe(
-      map((res) => {
+      map((res: any) => {
         this.storageService.remove("token");
         return res;
       })

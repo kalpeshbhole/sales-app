@@ -17,7 +17,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.loaderService.show();
-    console.log("Http Request");
     if(this.authService.isUserLoggedIn()){
       request = request.clone({
         headers: request.headers.set(
