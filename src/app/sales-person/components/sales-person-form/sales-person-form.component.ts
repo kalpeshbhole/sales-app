@@ -22,7 +22,7 @@ export class SalesPersonFormComponent {
 
   salesPersonForm = this.fb.group({
     firstName: ['', Validators.required],
-    middleName: ['', Validators.required],
+    middleName: [''],
     lastName: ['', Validators.required],
     regions: this.fb.array([])
   });
@@ -42,6 +42,7 @@ export class SalesPersonFormComponent {
         this.salesPersonForm.patchValue(this.salesPerson);
         this.salesPerson.regions.forEach(region => {
           this.regionsFA.push(this.fb.group({
+            countryId: [region.stateId, Validators.min(1)],
             stateId: [region.stateId, Validators.min(1)],
             isPrimary: [region.isPrimary, Validators.required]
           }))
@@ -56,11 +57,11 @@ export class SalesPersonFormComponent {
       lastName: '',
       regions: []
     }
-  }
 
-  changeCountry(countryId: number) {
-    this.lookupService.getStatesByCountryId(countryId).subscribe(states => {
-      this.states = states;
+    this.salesPersonForm.get("countryId")?.valueChanges.subscribe(countryId => {
+      this.lookupService.getStatesByCountryId(countryId || 0).subscribe(states => {
+        this.states = states;
+      });
     });
   }
 
@@ -74,6 +75,7 @@ export class SalesPersonFormComponent {
 
   newRegion(): FormGroup {
     return this.fb.group({
+      countryId: [null, Validators.min(1)],
       stateId: [null, Validators.min(1)],
       isPrimary: [false, Validators.required]
     });
@@ -91,14 +93,14 @@ export class SalesPersonFormComponent {
     this.salesPerson = this.salesPersonFormValue;
     if (this.salesPerson.id) {
       this.salesPersonService.updateSalesPerson(this.salesPerson).subscribe(() => {
-        this.notificationService.success("Store Updated","").then(() => {});
+        this.notificationService.success("Sales Person Updated","").then(() => {});
       },
       (error) => {
         this.notificationService.error("Error", error.error).then(() => {});
       });
     } else {
       this.salesPersonService.createSalesPerson(this.salesPerson).subscribe(() => {
-        this.notificationService.success("Store Created","").then(() => {});
+        this.notificationService.success("Sales Person Created","").then(() => {});
       },
       (error) => {
         this.notificationService.error("Error", error.error).then(() => {});

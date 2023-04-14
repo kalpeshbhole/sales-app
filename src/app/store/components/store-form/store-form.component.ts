@@ -81,14 +81,14 @@ export class StoreFormComponent {
     this.store = this.storeFormValue;
     if (this.store.id) {
       this.storeService.updateStore(this.store).subscribe(() => {
-        this.notificationService.success("Store Person Updated", "").then(() => { });
+        this.notificationService.success("Store Updated", "").then(() => { });
       },
         (error) => {
           this.notificationService.error("Error", error.error).then(() => { });
         });
     } else {
       this.storeService.createStore(this.store).subscribe(() => {
-        this.notificationService.success("Store Person Created", "").then(() => { });
+        this.notificationService.success("Store Created", "").then(() => { });
       },
         (error) => {
           this.notificationService.error("Error", error.error).then(() => { });
